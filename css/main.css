@@ -1,0 +1,57 @@
+@font-face {
+    font-family: iranYekan;
+    src: url(../assets/fonts/iranyekanwebregular\(fanum\).ttf);
+}
+body{
+    direction: rtl;
+    font-family: 'iranYekan';
+}
+.logo-team img{
+    width: auto;
+    height: 20px;
+}
+.logo-team-result img{
+    width: auto;
+    height: 50px;
+}
+.table{
+    font-size: .9em;
+}
+
+.table tr,
+.table td,
+.table th{
+    padding: .2rem;
+}
+
+.fa-dir{
+    direction: ltr;
+}
+
+.teamResult{
+    cursor: pointer;
+}
+
+.flex-basis-10{
+    flex-basis: 10%;
+}
+
+.flex-basis-35{
+    flex-basis: 35%;
+    font-size: 1rem;
+}
+
+.sc{
+    background-color: #5381ff;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding: 1.5rem;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.win-team{
+    background-color: #108519;
+}
