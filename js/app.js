@@ -1,10 +1,8 @@
 var baseUrl = 'https://www.scorebat.com/api/competition/3/';
 
-var $leageName = "iran-gulf-pro-league";
-
-// iran-gulf-pro-league
-// spain-la-liga
-// england-premier-league
+// var $leageName = "iran-gulf-pro-league";
+var $leageName = "spain-la-liga";
+// var $leageName = "england-premier-league";
 
 var iranLeage = document.getElementById('iranLeage');
 var spainLeage = document.getElementById('spainLeage');
@@ -28,54 +26,36 @@ function loadJSON(method, url, callback) {
         Chart.defaults.plugins.legend.rtl = 'true';
         Chart.defaults.plugins.legend.textDirection = 'rtl';
         // test
-        // for (i = 0; i < req.response.standings.rows.length; i++) {
-        //     var teams = [];
-        //     var teams = req.response.standings.rows[i].team;
-        //     console.log(teams);
-        // };
+        var teams = [];
+        var pnts = [];
+        var fa1s = [];
+        var fa2s = [];
+        var numberPnts =[];
+        var numberFa1s =[];
+        var numberFa2s =[];
+        for (var i = 0; i < req.response.standings.rows.length; i++) {
+            var team = req.response.standings.rows[i].team;
+            var pnt = req.response.standings.rows[i].pnt;
+            var fa1 = req.response.standings.rows[i].fa1;
+            var fa2 = req.response.standings.rows[i].fa2;
+            teams.push([team]);
+            pnts.push([pnt]);
+            fa1s.push([fa1]);
+            fa2s.push([fa2]);
+            numberPnts.push(parseInt(pnts[i]));
+            numberFa1s.push(parseInt(fa1s[i]));
+            numberFa2s.push(parseInt(fa2s[i]));
+        };
         // test
         let massPopChart = new Chart(myChart, {
         type: 'line',
         data: {
             labels: 
-                    [   req.response.standings.rows[0].team,
-                        req.response.standings.rows[1].team,
-                        req.response.standings.rows[2].team,
-                        req.response.standings.rows[3].team,
-                        req.response.standings.rows[4].team,
-                        req.response.standings.rows[5].team,
-                        req.response.standings.rows[6].team,
-                        req.response.standings.rows[7].team,
-                        req.response.standings.rows[8].team,
-                        req.response.standings.rows[9].team,
-                        req.response.standings.rows[10].team,
-                        req.response.standings.rows[11].team,
-                        req.response.standings.rows[12].team,
-                        req.response.standings.rows[13].team,
-                        req.response.standings.rows[14].team,
-                        req.response.standings.rows[15].team,
-                    ],
+                           teams,
             datasets: [
                 {
                     label: 'امتیاز',
-                    data: [
-                        req.response.standings.rows[0].pnt,
-                        req.response.standings.rows[1].pnt,
-                        req.response.standings.rows[2].pnt,
-                        req.response.standings.rows[3].pnt,
-                        req.response.standings.rows[4].pnt,
-                        req.response.standings.rows[5].pnt,
-                        req.response.standings.rows[6].pnt,
-                        req.response.standings.rows[7].pnt,
-                        req.response.standings.rows[8].pnt,
-                        req.response.standings.rows[9].pnt,
-                        req.response.standings.rows[10].pnt,
-                        req.response.standings.rows[11].pnt,
-                        req.response.standings.rows[12].pnt,
-                        req.response.standings.rows[13].pnt,
-                        req.response.standings.rows[14].pnt,
-                        req.response.standings.rows[15].pnt,
-                    ],
+                    data: numberPnts,
                     backgroundColor: 'rgb(255, 205, 86, .1)',
                     borderColor: 'rgb(255, 205, 86)',
                     borderWidth: 2,
@@ -84,24 +64,7 @@ function loadJSON(method, url, callback) {
                 },
                 {
                     label: 'گل های زده',
-                    data: [
-                        req.response.standings.rows[0].fa1,
-                        req.response.standings.rows[1].fa1,
-                        req.response.standings.rows[2].fa1,
-                        req.response.standings.rows[3].fa1,
-                        req.response.standings.rows[4].fa1,
-                        req.response.standings.rows[5].fa1,
-                        req.response.standings.rows[6].fa1,
-                        req.response.standings.rows[7].fa1,
-                        req.response.standings.rows[8].fa1,
-                        req.response.standings.rows[9].fa1,
-                        req.response.standings.rows[10].fa1,
-                        req.response.standings.rows[11].fa1,
-                        req.response.standings.rows[12].fa1,
-                        req.response.standings.rows[13].fa1,
-                        req.response.standings.rows[14].fa1,
-                        req.response.standings.rows[15].fa1,
-                    ],
+                    data: numberFa1s,
                     backgroundColor: 'rgb(54, 162, 235, .5)',
                     borderColor: 'rgb(54, 162, 235)',
                     borderWidth: 2,
@@ -110,24 +73,7 @@ function loadJSON(method, url, callback) {
                 },
                 {
                     label: 'گل های خورده',
-                    data: [
-                        req.response.standings.rows[0].fa2,
-                        req.response.standings.rows[1].fa2,
-                        req.response.standings.rows[2].fa2,
-                        req.response.standings.rows[3].fa2,
-                        req.response.standings.rows[4].fa2,
-                        req.response.standings.rows[5].fa2,
-                        req.response.standings.rows[6].fa2,
-                        req.response.standings.rows[7].fa2,
-                        req.response.standings.rows[8].fa2,
-                        req.response.standings.rows[9].fa2,
-                        req.response.standings.rows[10].fa2,
-                        req.response.standings.rows[11].fa2,
-                        req.response.standings.rows[12].fa2,
-                        req.response.standings.rows[13].fa2,
-                        req.response.standings.rows[14].fa2,
-                        req.response.standings.rows[15].fa2,
-                    ],
+                    data: numberFa2s,
                     backgroundColor: 'rgba(255, 99, 132, .5)',
                     borderColor: 'rgb(255, 99, 132)',
                     borderWidth: 2,
